@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <script src="script.js"></script>
+    <title>Générateur de CNI</title>
+  </head>
+  <body>
+    <div class="overlay" onclick="closeMenu()"></div>
+    <div class="navbar">
+      <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="welcome-message">Bienvenue</div>
+    </div>
+    <div class="menu">
+      <span class="close-menu" onclick="closeMenu()">&times;</span>
+      <a class="title-menu" href="index.html">7B Generator</a>
+
+      <div class="menu-section">
+        <div class="menu-section-title">Liste des générateurs</div>
+
+        <div class="menu-subsection">
+          <div class="menu-subsection-title">Documents d'identité</div>
+          <a href="cni.html" class="menu-item">Carte nationale d'identité</a>
+          <a href="#" class="menu-item">US passport Card</a>
+          <a href="#" class="menu-item">Déclaration perte CNI</a>
+          <a href="#" class="menu-item">Permis de conduire</a>
+          <a href="#" class="menu-item">Carte vitale</a>
+        </div>
+
+        <div class="menu-subsection">
+          <div class="menu-subsection-title">Justificatifs de domicile</div>
+          <a href="#" class="menu-item">Facture EDF</a>
+          <a href="#" class="menu-item">Facture Free</a>
+          <a href="#" class="menu-item">Facture Direct Énergie</a>
+          <a href="#" class="menu-item">Facture SFR</a>
+        </div>
+
+        <div class="menu-subsection">
+          <div class="menu-subsection-title">Autres documents</div>
+          <a href="#" class="menu-item">Fiche de paie</a>
+          <a href="#" class="menu-item">Relevé d'identité bancaire</a>
+          <a href="#" class="menu-item">Carte bancaire</a>
+          <a href="#" class="menu-item">Ordonnance</a>
+          <a href="#" class="menu-item">SOS médecin</a>
+          <a href="#" class="menu-item">Diplôme du baccalauréat</a>
+        </div>
+      </div>
+
+      <div class="menu-section social">
+        <div class="menu-section-title">Nous retrouver</div>
+        <a
+          href="https://discord.gg/EwTRsDmmAt"
+          target="_blank"
+          class="menu-item"
+        >
+          <i class="fab fa-discord"></i> 7B Discord
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="form-section">
+        <form id="cniForm">
+          <div class="input-group">
+            <h3>Informations personnelles</h3>
+            <label>Nom<input type="text" name="nom" required /></label>
+            <label>Prénom<input type="text" name="prenom" required /></label>
+            <label
+              >Sexe
+              <select name="sexe" required>
+                <option value="">-</option>
+                <option value="M">Homme / Male</option>
+                <option value="F">Femme / Female</option>
+              </select>
+            </label>
+            <label
+              >Taille (en cm)<input type="number" name="taille" required
+            /></label>
+            <label
+              >Date de naissance
+              <input type="date" name="dateNaissance" required />
+            </label>
+            <label
+              >Ville de naissance<input
+                type="text"
+                name="villeNaissance"
+                required />
+              <label
+                >Num. département naissance<input
+                  type="text"
+                  name="numDepartementNaissance"
+                  required /></label
+            ></label>
+
+            <h3>Adresse</h3>
+            <label
+              >Numéro et rue<input type="text" name="adresse" required
+            /></label>
+            <label>Ville<input type="text" name="ville" required /></label>
+            <label
+              >Code postal<input type="text" name="codePostal" required
+            /></label>
+
+            <h3>Informations administratives</h3>
+            <label
+              >Préfecture<input type="text" name="prefecture" required
+            /></label>
+            <label
+              >Num. département préfecture<input
+                type="text"
+                name="numDepartement"
+                required
+            /></label>
+            <label
+              >Date de délivrance de la CNI
+              <input type="date" name="dateDelivrance" required />
+            </label>
+
+            <h3>Informations Facultatives</h3>
+            <label
+              >Photo d'Identité
+              <div class="file-input-container">
+                <input
+                  type="text"
+                  readonly
+                  placeholder="Aucun fichier choisi"
+                />
+                <input type="file" name="photo" accept="image/*" id="photo" />
+                <label for="photo" class="browse-btn">Browse</label>
+              </div>
+            </label>
+            <label
+              >Signature
+              <div class="file-input-container">
+                <input
+                  type="text"
+                  readonly
+                  placeholder="Aucun fichier choisi"
+                />
+                <input
+                  type="file"
+                  name="signature"
+                  accept="image/*"
+                  id="signature"
+                />
+                <label for="signature" class="browse-btn">Browse</label>
+              </div>
+            </label>
+            <label
+              >Tampon préfecture
+              <div class="file-input-container">
+                <input
+                  type="text"
+                  readonly
+                  placeholder="Aucun fichier choisi"
+                />
+                <input type="file" name="tampon" accept="image/*" id="tampon" />
+                <label for="tampon" class="browse-btn">Browse</label>
+              </div>
+            </label>
+
+            <h3>Informations supplémentaires</h3>
+            <label
+              >Numéro de carte d'identité<input type="text" name="numeroCNI"
+            /></label>
+            <label
+              >Algo CNI recto ligne 1<input type="text" name="algoRecto1"
+            /></label>
+            <label
+              >Algo CNI recto ligne 2<input type="text" name="algoRecto2"
+            /></label>
+
+            <button type="submit">Validation</button>
+          </div>
+        </form>
+      </div>
+      <div class="preview-section"></div>
+    </div>
+    <div class="up-arrow" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+      </svg>
+    </div>
+  </body>
+</html>
