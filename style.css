@@ -48,6 +48,8 @@ p .home-text {
   margin-top: 12px;
   transform: translateX(-50%);
   width: 80%;
+  max-width: 1200px;
+  min-width: 280px;
   background-color: #222;
   padding: 15px 20px;
   display: flex;
@@ -57,39 +59,50 @@ p .home-text {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   z-index: 900;
 }
+
 .menu-icon {
   display: flex;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
+
 .menu-icon div {
   width: 30px;
   height: 5px;
   background-color: #ffffff;
   border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
+
+.menu-icon:hover div {
+  background-color: #b267a1;
+}
+
 .menu {
   position: fixed;
   top: 0;
-  left: -250px;
+  visibility: hidden;
+  opacity: 0;
+  left: 0;
   width: 250px;
   height: 100vh;
   background-color: #333;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: left 0.3s ease;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
   z-index: 1001;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .menu-section {
   width: 100%;
-  margin: 15px 0;
+  margin-top: 30px;
   text-align: left;
 }
 
@@ -117,6 +130,9 @@ p .home-text {
   margin: 5px 0;
   padding: 5px 30px;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu-section.social a {
@@ -148,6 +164,9 @@ p .home-text {
   text-align: center;
   transition: all 0.1s ease;
   padding: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu a:hover {
@@ -156,22 +175,29 @@ p .home-text {
 }
 
 .menu .title-menu {
-  margin: 25px 0 40px 0;
-  padding-top: 10px;
+  margin: 15px auto 60px;
+  padding: 15px;
   display: block;
   color: #eda2f2;
-  font-size: 22px;
-  font-weight: bold;
-  border-bottom: 1px solid #444;
-  padding-bottom: 10px;
-  width: 80%;
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-bottom: 3px solid #eda2f2;
+  width: 90%;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(237, 162, 242, 0.4);
 }
 
 .menu.open {
-  left: 0;
+  visibility: visible;
+  opacity: 1;
   width: 250px;
 }
+
 .menu .close-menu {
   display: none;
   position: absolute;
@@ -181,6 +207,7 @@ p .home-text {
   color: #babab3;
   cursor: pointer;
 }
+
 .menu.open .close-menu {
   display: block;
 }
@@ -188,6 +215,7 @@ p .home-text {
 .menu.open .close-menu:hover {
   color: #af0000;
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -198,9 +226,11 @@ p .home-text {
   display: none;
   z-index: 1000;
 }
+
 .overlay.active {
   display: block;
 }
+
 .welcome-message {
   font-size: 18px;
   color: #babab3;
@@ -565,7 +595,50 @@ hr {
   opacity: 1;
 }
 
+.construction-content {
+  margin-top: 120px;
+  text-align: center;
+  padding: 20px;
+  color: #babab3;
+}
+
+.construction-content .construction-icon {
+  font-size: 80px;
+  color: #b267a1;
+  margin-bottom: 30px;
+}
+
+.construction-content h1 {
+  color: #eda2f2;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background-color: #b267a1;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #eda2f2;
+  transform: translateY(-2px);
+}
+
 /* Media Queries pour la responsivité */
+@media screen and (max-width: 1400px) {
+  .navbar {
+    width: 85%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -581,10 +654,11 @@ hr {
   }
 
   .navbar {
-    width: 95%;
-    padding: 8px;
-    height: 40px;
+    width: 90%;
+    padding: 8px 12px;
+    height: 45px;
     margin-top: 5px;
+    border-radius: 8px;
   }
 
   .menu-icon {
@@ -592,7 +666,7 @@ hr {
   }
 
   .menu-icon div {
-    width: 22px;
+    width: 25px;
     height: 3px;
   }
 
@@ -602,11 +676,39 @@ hr {
 
   .menu {
     width: 100%;
-    left: -100%;
+    padding: 20px 0;
+    overflow-x: hidden;
+  }
+
+  .menu-section {
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .menu a.menu-item {
+    padding: 5px 20px;
   }
 
   .menu.open {
     width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+  }
+
+  .menu .close-menu {
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+  }
+
+  .menu.open .close-menu {
+    display: block;
+    position: fixed;
   }
 
   .features {
@@ -646,19 +748,26 @@ hr {
     height: auto;
     max-height: 500px;
   }
+
+  .menu .title-menu {
+    width: 85%;
+    font-size: 26px;
+    margin: 20px auto 50px;
+    padding: 12px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .navbar {
-    width: 92%;
-    padding: 5px;
-    height: 35px;
-    margin-top: 3px;
+    width: 95%;
+    padding: 6px 10px;
+    height: 40px;
+    border-radius: 6px;
   }
 
   .menu-icon div {
-    width: 20px;
-    height: 2px;
+    width: 22px;
+    height: 2.5px;
   }
 
   .welcome-message {
@@ -696,5 +805,20 @@ hr {
   .input-group select {
     font-size: 16px;
     padding: 8px;
+  }
+
+  .menu .title-menu {
+    width: 80%;
+    font-size: 24px;
+    margin: 15px auto 40px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navbar {
+    width: 98%;
+    padding: 5px 8px;
+    height: 38px;
   }
 }
